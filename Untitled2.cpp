@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <iomanip>
-#include <string.h>
+#include <char.h>
 using namespace std;
 
 struct node
@@ -31,27 +31,22 @@ void tambah (node **root,int databaru,char judul2[20],int tahun1,char penulis1[2
 		(*root) = baru;
 		(*root)->kiri = NULL;
 		(*root)->kanan = NULL;
- 		cout<<endl<<"Data Bertambah !";
+ 		printf("Data Bertambah !");
 	}
 	else if (databaru < (*root)->data) 
-		
 		tambah (&(*root)->kiri,databaru,judul2,tahun1,penulis1);
-	
 	else if (databaru > (*root)->data)
-		
-		  tambah (&(*root)->kanan,databaru,judul2,tahun1,penulis1);
-	
+		 tambah (&(*root)->kiri,databaru,judul2,tahun1,penulis1);
 	else if (databaru == (*root)->data) 
-		
 		cout<<"Data Sudah Ada";
 }
 
 
 void kop()
 {
-	cout<<" ----------------------------------------------------------------------- "<<endl;
-	cout<<"| Kode Buku	|	Judul Buku		  |	Jenis Buku	|"<<endl;
-	cout<<" ----------------------------------------------------------------------- "<<endl;
+	cout<<" ---------------------------------------------------- "<<endl;
+	cout<<"| Kode Buku |		Judul Buku		|	Jenis Buku	|"<<endl;
+	cout<<" ---------------------------------------------------- "<<endl;
 }
 
 void inOrder(node *root)
@@ -63,11 +58,11 @@ void inOrder(node *root)
 		if(root->data != NULL)
 		{
 			k=strlen(root->judul1[11][20]);
-		cout<<"| "<<root->data<<"		|";
+		cout<<"|	"<<root->data<<"	|";
 		if ((root->data) >= 11000 && (root->data) <= 11999)
-			cout<<" "<<root->judul1[11][20]<<setw(47-k)<<" | Buku Bacaaan		|";
+			cout<<" "<<setw(10)<<root->judul1[11][20]<<setw(47-k)<<"|	Buku Bacaaan		|";
 		else if ((root->data) >= 12000 && (root->data) <= 12999)
-			cout<<" "<<root->judul1[11][20]<<setw(47-k)<<"  | Buku Pelajaran		|";
+			cout<<" "<<setw(10)<<root->judul1[11][20]<<setw(47-k)<<"|	Buku Pelajaran	|";
 		cout<<endl;
 		}
 	inOrder(root->kanan);
@@ -79,6 +74,7 @@ void search(node **root,int cari)
 {		
 		if((*root) == NULL)
 			cout<<" Data tidak ditemukan!";
+		
 		//jika data yang dicari lebih kecil dari root
 		else if(cari < (*root)->data)
 			search(&(*root)->kiri, cari);
@@ -92,13 +88,13 @@ void search(node **root,int cari)
 		{
 			cout<<endl;
 			cout<<" Berikut adalah data buku dengan kode "<<cari<<endl;
-			cout<<" Judul Buku	= "<<(*root)->judul1[11][20]<<endl;
-			cout<<" Penulis Buku	= "<<(*root)->penulis[11][20]<<endl;
-			cout<<" Tahun Terbit	= "<<(*root)->tahun<<endl;
+			cout<<" Judul Buku = "<<(*root)->judul1[11][20]<<endl;
+			cout<<" Penulis Buku = "<<(*root)->penulis[11][20]<<endl;
+			cout<<" Tahun Terbit = "<<(*root)->tahun<<endl;
 		}
 		else
 		{
-			cout<<endl<<" Data tidak ditemukan! \n"<<endl;
+			cout<<" Data tidak ditemukan!"<<endl;
 		}
 }
 
@@ -260,24 +256,24 @@ int main ()
 {
 	char pil,judulbku[20],penulis2[20];
 	int tahun2, dell, cari, kode, i;
-	char judulbuku[11][20]={"","Matematika Mudah","Asal Usul Surabaya","Makan Tempe","M","Aa","Me","se","saf","awf","aww"};
-	int tahunbuku[11]={2000,2019,2020,1900,1992,1888,2009,2001,2021,2023,2020 };
-	char pnlsbuku[11][20]={"","arik","putu","waw","afif","sinta","cici","wawan","ziad","hana","waw"};
-	int kode1[11]={12001,12007,11118,11101,11102,12103,12111,11112,11113,11117, };
+	char judulbuku[11][20]={"Matematika Mudah","Asal Usul Surabaya","Makan Tempe","M","Aa","Me","se","saf","awf","aww","yt"};
+	int tahunbuku[11]={2000,2019,2020,1900,1992,1888,2009,2001,2021,2023, };
+	char pnlsbuku[11][20]={"alfan","arik","putu","waw","afif","sinta","cici","wawan","ziad","hana","waw"};
+	int kode1[11]={11001,11007,11118,11101,11102,11103,11111,11112,11113,11117, };
 	
 	for(i=0;i<11;i++)
 	tambah(&pohon, kode1[i], judulbuku[i], tahunbuku[i], pnlsbuku[i]);
-	system("cls");
+	
 	ulangi:
 		cout<<" ------------------------------------------------ "<<endl;
-		cout<<"|		PERPUSTAKAAN TESTING		 |"<<endl;
+		cout<<"|			PERPUSTAKAAN TESTING				|"<<endl;
 		cout<<"|------------------------------------------------|"<<endl;
-		cout<<"| Menu :					 |"<<endl;
-		cout<<"|	1. Tamplikan daftar buku		 |"<<endl;
-		cout<<"|	2. Lihat detail buku			 |"<<endl;
-		cout<<"|	3. Tambah data buku			 |"<<endl;
-		cout<<"|	4. Hapus data buku			 |"<<endl;
-		cout<<"|	5. Keluar				 |"<<endl;
+		cout<<"| Menu :											|"<<endl;
+		cout<<"|	1. Tamplikan daftar buku					|"<<endl;
+		cout<<"|	2. Lihat detail buku						|"<<endl;
+		cout<<"|	3. Tambah data buku							|"<<endl;
+		cout<<"|	4. Hapus data buku							|"<<endl;
+		cout<<"|	5. Keluar									|"<<endl;
 		cout<<" ------------------------------------------------ "<<endl<<endl;
 		cout<<" Masukan Pilihan Anda : ";
 		cin>>pil;
@@ -292,12 +288,10 @@ int main ()
 					inOrder(pohon);
 				}
 				else 
-					{
 					cout<<" Data Masih Kososng !";
-					}
-					cout<<" ----------------------------------------------------------------------- "<<endl;
-					system("pause");
-					_getch();
+					cout<<" ------------------------------------------------ ";
+					cout<<endl<<" (Tekan tombol apapun untuk kembali ke menu ) ";
+					getch();
 					break;
 					
 			case '2' :
@@ -305,58 +299,45 @@ int main ()
 				{
 					kop() ;
 					inOrder(pohon) ;
-					cout<<"--------------------------------------------------------------------------"<<endl;
+					cout<<"----------------------------------------------------------------------------";
 					cout<<" Masukkan kode buku yang ingin dicari : ";
 					cin>>cari;
-					cout<<" ----------------------------------------------------------------------- "<<endl;
 					search (&pohon, cari);
-					cout<<endl<<" ----------------------------------------------------------------------- "<<endl;
 					cout<<endl;
     			}
     			else
-				{
-				cout<<endl<<" Masih kosong !";
-				}
-  				  system("pause");
-  				  _getch();
+					cout<<endl<<" Masih kosong !";
+  				  cout<<endl<<" ( Tekan tombol apapun untuk kembali ke menu )";
+  				  getch();
  				  break;
 
    			 case '3' :
     			tambah:
-    				cout<<endl;
     				cout<<" ==== Format Kode Buku ===="<<endl;
     				cout<<"  Buku Bacaan    =>  11xxx "<<endl;
     				cout<<"  Buku Pelajaran =>  12xxx "<<endl;
     				cout<<" =========================="<<endl;
     				cout<<" Masukkan Kode Buku : ";
    			 		cin>>kode;
-   			 		
 				if (kode>= 11000 && kode <= 11999)
     				cout<<" Jenis -> buku pelajaran "<<endl<<endl;
     			else if(kode >= 12000 && kode <= 12999)
     		  		cout<<" Jenis -> buku pelajaran "<<endl<<endl;
     			else
     			{
-    				system("cls");
+    			
     				cout<<" !!! Kode buku salah, isikam sesuai format !!!"
     			    <<endl<<endl;
-    			    
     			goto tambah;
 				}
 					cout<<" Tulis data buku baru!"<<endl;
-					cout<<" Judul buku	= "; 
-					cin>>judulbku;
-					gets(judulbku);
-					cout<<" Nama penulis	= ";
-					cin>>penulis2; 
-					gets(penulis2);
-					cout<<" Tahun terbit	= "; 
-					cin>>tahun2;
-				
+					cout<<" Judul buku       ="; gets(judulbku);
+					cout<<" Nama penulis     ="; gets(penulis2) ;
+					cout<<" Tahun terbit     ="; cin>>tahun2;
+			 
 				tambah(&pohon,kode,penulis2,tahun2,penulis2);
-				system("pause");
-				system("cls");
-				_getch();
+					cout<<endl<<" ( Tekan tombol apapun untuk kembali ke menu )";
+				getch();
 				break;
 			
 			case '4':
@@ -387,5 +368,4 @@ int main ()
    		}
 goto ulangi;
 akhir:
-	return 0;
 }
